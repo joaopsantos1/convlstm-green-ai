@@ -1,0 +1,43 @@
+{
+  "benchmark": "ConvLSTM and MS-ConvLSTM Prediction - Evaluation",
+  "total_expected": 16,
+  "repetitions": 4,
+  "executions": {
+    "exec_0004": {
+      "path": "runs/exec_0004",
+      "params": {
+        "dataset": "moving_mnist",
+        "model_architecture": "ms_convlstm",
+        "project_dir": "/home/jrezende/convlstm-green-ai",
+        "venv_dir": "/home/jrezende/convlstm-green-ai/.venv",
+        "results_dir": "/home/jrezende/convlstm-green-ai/experiments_results",
+        "weight_file": "/home/jrezende/convlstm-green-ai/experiments_results/training_moving_mnist_standard_ms_convlstm_1/weights/ms_convlstm/moving_mnist_ms_convlstm_standard_100.pth"
+      },
+      "command": "\"/home/jrezende/convlstm-green-ai/.venv/bin/python\" \"/home/jrezende/convlstm-green-ai/predictor.py\" --model_weight_file_path /home/jrezende/convlstm-green-ai/experiments_results/training_moving_mnist_standard_ms_convlstm_1/weights/ms_convlstm/moving_mnist_ms_convlstm_standard_100.pth --working_dir /home/jrezende/convlstm-green-ai/experiments_results --normalize_values --model_architecture ms_convlstm --dataset moving_mnist --result_folder_suffix ms_convlstm_1"
+    },
+    "exec_0001": {
+      "path": "runs/exec_0001",
+      "params": {
+        "dataset": "taasrad19",
+        "model_architecture": "convlstm",
+        "project_dir": "/home/jrezende/convlstm-green-ai",
+        "venv_dir": "/home/jrezende/convlstm-green-ai/.venv",
+        "results_dir": "/home/jrezende/convlstm-green-ai/experiments_results",
+        "weight_file": "/home/jrezende/convlstm-green-ai/experiments_results/training_taasrad19_standard_convlstm_1/weights/convlstm/taasrad19_convlstm_standard_100.pth"
+      },
+      "command": "\"/home/jrezende/convlstm-green-ai/.venv/bin/python\" \"/home/jrezende/convlstm-green-ai/predictor.py\" --model_weight_file_path /home/jrezende/convlstm-green-ai/experiments_results/training_taasrad19_standard_convlstm_1/weights/convlstm/taasrad19_convlstm_standard_100.pth --working_dir /home/jrezende/convlstm-green-ai/experiments_results --normalize_values --model_architecture convlstm --dataset taasrad19 --result_folder_suffix convlstm_1"
+    },
+    "exec_0003": {
+      "path": "runs/exec_0003",
+      "params": {
+        "dataset": "moving_mnist",
+        "model_architecture": "convlstm",
+        "project_dir": "/home/jrezende/convlstm-green-ai",
+        "venv_dir": "/home/jrezende/convlstm-green-ai/.venv",
+        "results_dir": "/home/jrezende/convlstm-green-ai/experiments_results",
+        "weight_file": "/home/jrezende/convlstm-green-ai/experiments_results/training_moving_mnist_standard_convlstm_1/weights/convlstm/moving_mnist_convlstm_standard_100.pth"
+      },
+      "command": "\"/home/jrezende/convlstm-green-ai/.venv/bin/python\" \"/home/jrezende/convlstm-green-ai/predictor.py\" --model_weight_file_path /home/jrezende/convlstm-green-ai/experiments_results/training_moving_mnist_standard_convlstm_1/weights/convlstm/moving_mnist_convlstm_standard_100.pth --working_dir /home/jrezende/convlstm-green-ai/experiments_results --normalize_values --model_architecture convlstm --dataset moving_mnist --result_folder_suffix convlstm_1"
+    }
+  }
+}

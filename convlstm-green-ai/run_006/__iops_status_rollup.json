@@ -1,0 +1,375 @@
+{
+  "benchmark": "ConvLSTM and MS-ConvLSTM Prediction - Evaluation",
+  "repetitions": 4,
+  "complete": true,
+  "executions": {
+    "exec_0004": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:16:29",
+          "cached": false,
+          "duration_seconds": 110,
+          "metrics": {
+            "total_predict_time_sec": 37.22015040501719,
+            "total_predict_time_with_evaluation_sec": 61.98987611301709,
+            "MAE": 6.457177517768695,
+            "MSE": 703.0527990360387,
+            "RMSE": 25.70704829548896,
+            "SSIM": 0.8897578636892398,
+            "PSNR": 20.594945036542885,
+            "CSI_avg": 0.31521961092948914,
+            "POD_avg": 0.9906067848205566,
+            "FAR_avg": 0.6836726069450378,
+            "HSS_avg": 0.4066159725189209
+          },
+          "submission_time": "2026-10-19 02:14:29",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:17:00",
+          "cached": false,
+          "duration_seconds": 133,
+          "metrics": {
+            "total_predict_time_sec": 47.90852739010006,
+            "total_predict_time_with_evaluation_sec": 85.97438823152333,
+            "MAE": 6.380879820279931,
+            "MSE": 706.7858207202312,
+            "RMSE": 25.74280909757953,
+            "SSIM": 0.8951721437615339,
+            "PSNR": 20.61346730463084,
+            "CSI_avg": 0.46369680762290955,
+            "POD_avg": 0.9843170046806335,
+            "FAR_avg": 0.5330599546432495,
+            "HSS_avg": 0.589183509349823
+          },
+          "submission_time": "2026-10-19 02:14:29",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:25:30",
+          "cached": false,
+          "duration_seconds": 82,
+          "metrics": {
+            "total_predict_time_sec": 35.56280827999581,
+            "total_predict_time_with_evaluation_sec": 59.38398191501619,
+            "MAE": 6.638711925588896,
+            "MSE": 720.4541389761285,
+            "RMSE": 26.02829160266316,
+            "SSIM": 0.881339809357247,
+            "PSNR": 20.490594541243087,
+            "CSI_avg": 0.5146439075469971,
+            "POD_avg": 0.9817245602607727,
+            "FAR_avg": 0.48073577880859375,
+            "HSS_avg": 0.6412754058837891
+          },
+          "submission_time": "2026-10-19 02:24:00",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:27:00",
+          "cached": false,
+          "duration_seconds": 111,
+          "metrics": {
+            "total_predict_time_sec": 46.114089279435575,
+            "total_predict_time_with_evaluation_sec": 83.81928711477667,
+            "MAE": 6.827173756539535,
+            "MSE": 704.207949638779,
+            "RMSE": 25.67977996959334,
+            "SSIM": 0.8350032555478294,
+            "PSNR": 20.62816692960356,
+            "CSI_avg": 0.5673315525054932,
+            "POD_avg": 0.978078305721283,
+            "FAR_avg": 0.42627936601638794,
+            "HSS_avg": 0.6930348873138428
+          },
+          "submission_time": "2026-10-19 02:25:00",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0001": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:19:30",
+          "cached": false,
+          "duration_seconds": 167,
+          "metrics": {
+            "total_predict_time_sec": 69.48945466399891,
+            "total_predict_time_with_evaluation_sec": 148.55837832501857,
+            "MAE": 0.8941351829852671,
+            "MSE": 5.246163859226272,
+            "RMSE": 2.0029609001166686,
+            "SSIM": 0.8089256968257894,
+            "PSNR": 29.839027602552843,
+            "CSI_avg": 0.8580385446548462,
+            "POD_avg": 0.9347219467163086,
+            "FAR_avg": 0.08733518421649933,
+            "HSS_avg": 0.8226901888847351
+          },
+          "submission_time": "2026-10-19 02:16:30",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:21:00",
+          "cached": false,
+          "duration_seconds": 209,
+          "metrics": {
+            "total_predict_time_sec": 62.89791696704924,
+            "total_predict_time_with_evaluation_sec": 189.58278775773942,
+            "MAE": 0.8822191394987149,
+            "MSE": 5.3321964573062965,
+            "RMSE": 2.0134487066477744,
+            "SSIM": 0.8126688455010979,
+            "PSNR": 29.84770089153317,
+            "CSI_avg": 0.8586258888244629,
+            "POD_avg": 0.9354436993598938,
+            "FAR_avg": 0.08733775466680527,
+            "HSS_avg": 0.8235055208206177
+          },
+          "submission_time": "2026-10-19 02:17:00",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:25:00",
+          "cached": false,
+          "duration_seconds": 209,
+          "metrics": {
+            "total_predict_time_sec": 61.237834110856056,
+            "total_predict_time_with_evaluation_sec": 189.8967051859945,
+            "MAE": 0.9174493401095478,
+            "MSE": 5.572290961858451,
+            "RMSE": 2.069320454573775,
+            "SSIM": 0.7990135459509202,
+            "PSNR": 29.59956690637368,
+            "CSI_avg": 0.8570384979248047,
+            "POD_avg": 0.9289306998252869,
+            "FAR_avg": 0.08286746591329575,
+            "HSS_avg": 0.822797417640686
+          },
+          "submission_time": "2026-10-19 02:21:00",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:24:00",
+          "cached": false,
+          "duration_seconds": 168,
+          "metrics": {
+            "total_predict_time_sec": 69.23880675697,
+            "total_predict_time_with_evaluation_sec": 151.5609251089627,
+            "MAE": 0.8863948730320976,
+            "MSE": 5.2310696288641045,
+            "RMSE": 2.0038072478725417,
+            "SSIM": 0.810986808817637,
+            "PSNR": 29.843034275063857,
+            "CSI_avg": 0.8603253364562988,
+            "POD_avg": 0.9472360610961914,
+            "FAR_avg": 0.0962492898106575,
+            "HSS_avg": 0.8227397799491882
+          },
+          "submission_time": "2026-10-19 02:21:00",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0003": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:21:00",
+          "cached": false,
+          "duration_seconds": 69,
+          "metrics": {
+            "total_predict_time_sec": 22.962169745995197,
+            "total_predict_time_with_evaluation_sec": 46.76070801302558,
+            "MAE": 14.77128991546617,
+            "MSE": 1667.6977709106152,
+            "RMSE": 40.58852392344101,
+            "SSIM": 0.5000232920609836,
+            "PSNR": 16.255129713937198,
+            "CSI_avg": 0.11541443318128586,
+            "POD_avg": 0.9907369613647461,
+            "FAR_avg": 0.8844384551048279,
+            "HSS_avg": 0.08998086303472519
+          },
+          "submission_time": "2026-10-19 02:19:30",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:34:31",
+          "cached": false,
+          "duration_seconds": 90,
+          "metrics": {
+            "total_predict_time_sec": 18.644127349369228,
+            "total_predict_time_with_evaluation_sec": 61.747840649448335,
+            "MAE": 14.807367555523468,
+            "MSE": 1681.1302833778302,
+            "RMSE": 40.75200701716678,
+            "SSIM": 0.4869370793693672,
+            "PSNR": 16.22816245787151,
+            "CSI_avg": 0.12185346335172653,
+            "POD_avg": 0.991899311542511,
+            "FAR_avg": 0.8779716491699219,
+            "HSS_avg": 0.10007613152265549
+          },
+          "submission_time": "2026-10-19 02:32:31",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:36:01",
+          "cached": false,
+          "duration_seconds": 81,
+          "metrics": {
+            "total_predict_time_sec": 20.45295475423336,
+            "total_predict_time_with_evaluation_sec": 58.02245824597776,
+            "MAE": 14.724266928445683,
+            "MSE": 1674.8849803328233,
+            "RMSE": 40.67985882056675,
+            "SSIM": 0.47673057662421897,
+            "PSNR": 16.242014180405135,
+            "CSI_avg": 0.09328030049800873,
+            "POD_avg": 0.9939523935317993,
+            "FAR_avg": 0.9066553115844727,
+            "HSS_avg": 0.04624967649579048
+          },
+          "submission_time": "2026-10-19 02:34:31",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:37:31",
+          "cached": false,
+          "duration_seconds": 81,
+          "metrics": {
+            "total_predict_time_sec": 18.143127012066543,
+            "total_predict_time_with_evaluation_sec": 55.73793505690992,
+            "MAE": 15.00588466064871,
+            "MSE": 1678.1941277011406,
+            "RMSE": 40.71266575273125,
+            "SSIM": 0.48964380759003623,
+            "PSNR": 16.228796579562474,
+            "CSI_avg": 0.1387234926223755,
+            "POD_avg": 0.9884034395217896,
+            "FAR_avg": 0.861000657081604,
+            "HSS_avg": 0.1322530061006546
+          },
+          "submission_time": "2026-10-19 02:36:01",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0002": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:29:31",
+          "cached": false,
+          "duration_seconds": 208,
+          "metrics": {
+            "total_predict_time_sec": 112.50156915199477,
+            "total_predict_time_with_evaluation_sec": 191.40440546296304,
+            "MAE": 0.750801535609167,
+            "MSE": 3.67912599613239,
+            "RMSE": 1.7105886520753355,
+            "SSIM": 0.8454789207333231,
+            "PSNR": 31.003654550694748,
+            "CSI_avg": 0.8623666763305664,
+            "POD_avg": 0.9779319763183594,
+            "FAR_avg": 0.12072634696960449,
+            "HSS_avg": 0.8190410733222961
+          },
+          "submission_time": "2026-10-19 02:25:31",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:32:31",
+          "cached": false,
+          "duration_seconds": 298,
+          "metrics": {
+            "total_predict_time_sec": 150.4380961097777,
+            "total_predict_time_with_evaluation_sec": 279.3786014523357,
+            "MAE": 0.7414710485063143,
+            "MSE": 3.6999475939284983,
+            "RMSE": 1.7143026074357943,
+            "SSIM": 0.847479850315845,
+            "PSNR": 30.997686290287543,
+            "CSI_avg": 0.8607217073440552,
+            "POD_avg": 0.977281391620636,
+            "FAR_avg": 0.1218988224864006,
+            "HSS_avg": 0.8160669207572937
+          },
+          "submission_time": "2026-10-19 02:27:00",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:33:31",
+          "cached": false,
+          "duration_seconds": 216,
+          "metrics": {
+            "total_predict_time_sec": 114.22824824799318,
+            "total_predict_time_with_evaluation_sec": 198.12088384799426,
+            "MAE": 0.7275853616515399,
+            "MSE": 3.6859359907625784,
+            "RMSE": 1.7116751362843314,
+            "SSIM": 0.8473162529773867,
+            "PSNR": 31.00889329774395,
+            "CSI_avg": 0.8666998744010925,
+            "POD_avg": 0.9521818161010742,
+            "FAR_avg": 0.09409268945455551,
+            "HSS_avg": 0.8314903378486633
+          },
+          "submission_time": "2026-10-19 02:29:31",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-19 02:37:31",
+          "cached": false,
+          "duration_seconds": 210,
+          "metrics": {
+            "total_predict_time_sec": 114.14325823599938,
+            "total_predict_time_with_evaluation_sec": 193.0510857659974,
+            "MAE": 0.7420960241098691,
+            "MSE": 3.679649339464927,
+            "RMSE": 1.7089574508310827,
+            "SSIM": 0.8475340186366325,
+            "PSNR": 31.026191075025853,
+            "CSI_avg": 0.8636987805366516,
+            "POD_avg": 0.9719590544700623,
+            "FAR_avg": 0.11447546631097794,
+            "HSS_avg": 0.8221398591995239
+          },
+          "submission_time": "2026-10-19 02:33:31",
+          "job_start": null
+        }
+      }
+    }
+  }
+}

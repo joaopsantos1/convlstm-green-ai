@@ -1,0 +1,51 @@
+{
+  "benchmark": "ConvLSTM and MS-ConvLSTM Training",
+  "total_expected": 16,
+  "repetitions": 4,
+  "executions": {
+    "exec_0004": {
+      "path": "runs/exec_0004",
+      "params": {
+        "dataset": "moving_mnist",
+        "model_architecture": "ms_convlstm",
+        "project_dir": "/home/jrezende/convlstm-green-ai",
+        "venv_dir": "/home/jrezende/convlstm-green-ai/.venv",
+        "results_dir": "/home/jrezende/convlstm-green-ai/experiments_results"
+      },
+      "command": "\"/home/jrezende/convlstm-green-ai/.venv/bin/python\" \"/home/jrezende/convlstm-green-ai/trainer.py\" --num_epochs 100 --batch_size 10 --working_dir /home/jrezende/convlstm-green-ai/experiments_results --start_epoch_saving 100 --normalize_values --model_architecture ms_convlstm --dataset moving_mnist --result_folder_suffix ms_convlstm_1"
+    },
+    "exec_0001": {
+      "path": "runs/exec_0001",
+      "params": {
+        "dataset": "taasrad19",
+        "model_architecture": "convlstm",
+        "project_dir": "/home/jrezende/convlstm-green-ai",
+        "venv_dir": "/home/jrezende/convlstm-green-ai/.venv",
+        "results_dir": "/home/jrezende/convlstm-green-ai/experiments_results"
+      },
+      "command": "\"/home/jrezende/convlstm-green-ai/.venv/bin/python\" \"/home/jrezende/convlstm-green-ai/trainer.py\" --num_epochs 100 --batch_size 10 --working_dir /home/jrezende/convlstm-green-ai/experiments_results --start_epoch_saving 100 --normalize_values --model_architecture convlstm --dataset taasrad19 --result_folder_suffix convlstm_1"
+    },
+    "exec_0003": {
+      "path": "runs/exec_0003",
+      "params": {
+        "dataset": "moving_mnist",
+        "model_architecture": "convlstm",
+        "project_dir": "/home/jrezende/convlstm-green-ai",
+        "venv_dir": "/home/jrezende/convlstm-green-ai/.venv",
+        "results_dir": "/home/jrezende/convlstm-green-ai/experiments_results"
+      },
+      "command": "\"/home/jrezende/convlstm-green-ai/.venv/bin/python\" \"/home/jrezende/convlstm-green-ai/trainer.py\" --num_epochs 100 --batch_size 10 --working_dir /home/jrezende/convlstm-green-ai/experiments_results --start_epoch_saving 100 --normalize_values --model_architecture convlstm --dataset moving_mnist --result_folder_suffix convlstm_1"
+    },
+    "exec_0002": {
+      "path": "runs/exec_0002",
+      "params": {
+        "dataset": "taasrad19",
+        "model_architecture": "ms_convlstm",
+        "project_dir": "/home/jrezende/convlstm-green-ai",
+        "venv_dir": "/home/jrezende/convlstm-green-ai/.venv",
+        "results_dir": "/home/jrezende/convlstm-green-ai/experiments_results"
+      },
+      "command": "\"/home/jrezende/convlstm-green-ai/.venv/bin/python\" \"/home/jrezende/convlstm-green-ai/trainer.py\" --num_epochs 100 --batch_size 10 --working_dir /home/jrezende/convlstm-green-ai/experiments_results --start_epoch_saving 100 --normalize_values --model_architecture ms_convlstm --dataset taasrad19 --result_folder_suffix ms_convlstm_1"
+    }
+  }
+}

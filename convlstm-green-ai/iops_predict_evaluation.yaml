@@ -1,0 +1,143 @@
+benchmark:
+  name: "ConvLSTM and MS-ConvLSTM Prediction - Evaluation"
+  workdir: "./"
+  cache_file: "./cache_predict.db"
+  cache_exclude_vars: ["results_dir", "weight_file", "project_dir"] 
+  executor: slurm
+  search_method: exhaustive
+  repetitions: 4
+  parallel: 2
+  probes:
+    system_snapshot: true
+    resource_sampling: true
+    gpu_sampling: true
+    sampling_interval: 1.0
+
+vars:
+  dataset:
+    type: str
+    sweep:
+      mode: list
+      values: ["taasrad19", "moving_mnist"]
+
+  model_architecture:
+    type: str
+    sweep:
+      mode: list
+      values: ["convlstm", "ms_convlstm"]
+
+  project_dir:
+    type: str
+    expr: "/home/jrezende/convlstm-green-ai"
+
+  venv_dir:
+    type: str
+    expr: "{{ project_dir }}/.venv"
+
+  results_dir:
+    type: str
+    expr: "{{ project_dir }}/experiments_results"
+
+  weight_file:
+    type: str
+    expr: "{{ results_dir }}/training_{{ dataset }}_standard_{{ model_architecture }}_{{ repetition }}/weights/{{ model_architecture }}/{{ dataset }}_{{ model_architecture }}_standard_100.pth"
+
+command:
+  template: >
+    "{{ venv_dir }}/bin/python" "{{ project_dir }}/predictor.py"
+    --model_weight_file_path {{ weight_file }}
+    --working_dir {{ results_dir }}
+    --normalize_values
+    --model_architecture {{ model_architecture }}
+    --dataset {{ dataset }}
+    --result_folder_suffix {{ model_architecture }}_{{ repetition }}
+
+scripts:
+  - name: "convlstm_predict_evaluation"
+    submit: "bash"
+    script_template: |
+      #!/bin/bash
+      #SBATCH --job-name={{ model_architecture }}_pred_evaluation_{{ dataset }}
+      #SBATCH --ntasks=1
+      #SBATCH --nodes=2
+      #SBATCH --ntasks-per-node=1
+      #SBATCH --nodelist=sirocco[22-25]
+      #SBATCH --time=24:00:00
+      #SBATCH -o batch%j.out
+      #SBATCH -e batch%j.err
+      #SBATCH --exclusive
+      #SBATCH --constraint sirocco
+      #SBATCH --exclude=sirocco23,sirocco24
+
+      set -o pipefail
+
+      module load compiler/cuda/12.3
+      module load nvidia-driver-libs-plafrim/610
+      module load zlib
+
+      if [[ ! -x "{{ venv_dir }}/bin/python" ]]; then
+        echo "Python virtual environment not found at {{ venv_dir }}" >&2
+        exit 1
+      fi
+
+      module add compiler/gcc/11.2.0
+      module add linalg/openblas/0.3.9 
+      
+      {{ command.template }} 2>&1 | tee {{ execution_dir }}/predict.log
+
+    parser:
+      file: "{{ results_dir }}/predict_{{ dataset }}_standard_{{ model_architecture }}_{{ repetition }}/metrics/execution_metrics_predict_standard_{{ dataset }}.csv"
+      metrics:
+        - name: total_predict_time_sec
+        - name: total_predict_time_with_evaluation_sec
+        - name: MAE
+        - name: MSE
+        - name: RMSE
+        - name: SSIM
+        - name: PSNR
+        - name: CSI_avg
+        - name: POD_avg
+        - name: FAR_avg
+        - name: HSS_avg
+      parser_script: |
+        import csv
+        import os
+        def parse(file_path):
+            # Parse execution metrics
+            with open(file_path) as f:
+                reader = csv.DictReader(f)
+                exec_row = next(reader)
+
+            results = {
+                "total_predict_time_sec": float(exec_row["total_predict_time_sec"]),
+                "total_predict_time_with_evaluation_sec": float(exec_row["total_predict_time_with_evaluation_sec"]),
+            }
+
+            # Parse image quality metrics (MAE, MSE, RMSE, SSIM, PSNR)
+            metrics_dir = os.path.dirname(file_path)
+            img_file = os.path.join(
+                metrics_dir,
+                f"standard_{vars['dataset']}_image_metrics.csv"
+            )
+            with open(img_file) as f:
+                reader = csv.DictReader(f)
+                img_row = next(reader)
+            for m in ["MAE", "MSE", "RMSE", "SSIM", "PSNR"]:
+                results[m] = float(img_row[m])
+
+            # Parse threshold metrics (use first threshold row for avg values)
+            thr_file = os.path.join(
+                metrics_dir,
+                f"standard_{vars['dataset']}_threshold_metrics.csv"
+            )
+            with open(thr_file) as f:
+                reader = csv.DictReader(f)
+                thr_row = next(reader)
+            for m in ["CSI_avg", "POD_avg", "FAR_avg", "HSS_avg"]:
+                results[m] = float(thr_row[m])
+
+            return results
+
+output:
+  sink:
+    type: csv

@@ -1,0 +1,263 @@
+{
+  "benchmark": "ConvLSTM and MS-ConvLSTM Training",
+  "repetitions": 4,
+  "complete": true,
+  "executions": {
+    "exec_0004": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 10:07:17",
+          "cached": false,
+          "duration_seconds": 13179,
+          "metrics": {
+            "total_training_time_sec": 13137.644529092126,
+            "average_epoch_time_sec": 131.37644529092125,
+            "min_epoch_loss": 0.007774063329108887,
+            "min_epoch": 97
+          },
+          "submission_time": "2026-10-17 06:27:11",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 10:08:17",
+          "cached": false,
+          "duration_seconds": 13234,
+          "metrics": {
+            "total_training_time_sec": 13182.595633774996,
+            "average_epoch_time_sec": 131.82595633774997,
+            "min_epoch_loss": 0.007720837392326858,
+            "min_epoch": 97
+          },
+          "submission_time": "2026-10-17 06:27:11",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 18:41:30",
+          "cached": false,
+          "duration_seconds": 13148,
+          "metrics": {
+            "total_training_time_sec": 13106.617871623486,
+            "average_epoch_time_sec": 131.06617871623487,
+            "min_epoch_loss": 0.007765812739833362,
+            "min_epoch": 95
+          },
+          "submission_time": "2026-10-17 15:01:54",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 21:07:03",
+          "cached": false,
+          "duration_seconds": 13016,
+          "metrics": {
+            "total_training_time_sec": 12972.548860403942,
+            "average_epoch_time_sec": 129.7254886040394,
+            "min_epoch_loss": 0.007739782964603768,
+            "min_epoch": 93
+          },
+          "submission_time": "2026-10-17 17:29:58",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0001": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 12:32:50",
+          "cached": false,
+          "duration_seconds": 8707,
+          "metrics": {
+            "total_training_time_sec": 8666.12085664901,
+            "average_epoch_time_sec": 86.66120856649009,
+            "min_epoch_loss": 0.0011427006875072204,
+            "min_epoch": 32
+          },
+          "submission_time": "2026-10-17 10:07:17",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 12:32:50",
+          "cached": false,
+          "duration_seconds": 8646,
+          "metrics": {
+            "total_training_time_sec": 8608.614595153369,
+            "average_epoch_time_sec": 86.0861459515337,
+            "min_epoch_loss": 0.0011446878141379618,
+            "min_epoch": 27
+          },
+          "submission_time": "2026-10-17 10:08:17",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 15:00:24",
+          "cached": false,
+          "duration_seconds": 8822,
+          "metrics": {
+            "total_training_time_sec": 8789.814487402095,
+            "average_epoch_time_sec": 87.89814487402094,
+            "min_epoch_loss": 0.0011320909263634927,
+            "min_epoch": 29
+          },
+          "submission_time": "2026-10-17 12:32:51",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 17:29:58",
+          "cached": false,
+          "duration_seconds": 8941,
+          "metrics": {
+            "total_training_time_sec": 8904.542978150072,
+            "average_epoch_time_sec": 89.04542978150072,
+            "min_epoch_loss": 0.0011560518678544957,
+            "min_epoch": 33
+          },
+          "submission_time": "2026-10-17 15:00:24",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0003": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 15:01:54",
+          "cached": false,
+          "duration_seconds": 8918,
+          "metrics": {
+            "total_training_time_sec": 8866.317484260537,
+            "average_epoch_time_sec": 88.66317484260537,
+            "min_epoch_loss": 0.02513720175458325,
+            "min_epoch": 21
+          },
+          "submission_time": "2026-10-17 12:32:51",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 03:14:12",
+          "cached": false,
+          "duration_seconds": 9362,
+          "metrics": {
+            "total_training_time_sec": 9307.04297927511,
+            "average_epoch_time_sec": 93.0704297927511,
+            "min_epoch_loss": 0.02512867520459824,
+            "min_epoch": 16
+          },
+          "submission_time": "2026-10-18 00:37:38",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 05:47:16",
+          "cached": false,
+          "duration_seconds": 9154,
+          "metrics": {
+            "total_training_time_sec": 9110.47203620011,
+            "average_epoch_time_sec": 91.1047203620011,
+            "min_epoch_loss": 0.025004770134886105,
+            "min_epoch": 24
+          },
+          "submission_time": "2026-10-18 03:14:12",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 08:06:19",
+          "cached": false,
+          "duration_seconds": 9261,
+          "metrics": {
+            "total_training_time_sec": 9199.737824462354,
+            "average_epoch_time_sec": 91.99737824462355,
+            "min_epoch_loss": 0.025037586662090487,
+            "min_epoch": 25
+          },
+          "submission_time": "2026-10-18 05:31:46",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0002": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-17 22:17:35",
+          "cached": false,
+          "duration_seconds": 12941,
+          "metrics": {
+            "total_training_time_sec": 12888.073641823605,
+            "average_epoch_time_sec": 128.88073641823604,
+            "min_epoch_loss": 0.0009718952353895557,
+            "min_epoch": 43
+          },
+          "submission_time": "2026-10-17 18:41:30",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 00:37:38",
+          "cached": false,
+          "duration_seconds": 12600,
+          "metrics": {
+            "total_training_time_sec": 12552.203546915203,
+            "average_epoch_time_sec": 125.52203546915203,
+            "min_epoch_loss": 0.0009641772972165861,
+            "min_epoch": 37
+          },
+          "submission_time": "2026-10-17 21:07:03",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 01:54:10",
+          "cached": false,
+          "duration_seconds": 12984,
+          "metrics": {
+            "total_training_time_sec": 12932.731892338954,
+            "average_epoch_time_sec": 129.32731892338953,
+            "min_epoch_loss": 0.0009600129822501912,
+            "min_epoch": 35
+          },
+          "submission_time": "2026-10-17 22:17:35",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 05:31:45",
+          "cached": false,
+          "duration_seconds": 13038,
+          "metrics": {
+            "total_training_time_sec": 12985.082025797106,
+            "average_epoch_time_sec": 129.85082025797107,
+            "min_epoch_loss": 0.0009751866744905287,
+            "min_epoch": 32
+          },
+          "submission_time": "2026-10-18 01:54:10",
+          "job_start": null
+        }
+      }
+    }
+  }
+}

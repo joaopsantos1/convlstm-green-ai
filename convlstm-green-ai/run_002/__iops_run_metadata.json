@@ -1,0 +1,270 @@
+{
+  "iops_version": "3.5.10.dev0",
+  "benchmark": {
+    "name": "ConvLSTM and MS-ConvLSTM Training",
+    "description": "",
+    "executor": "slurm",
+    "repetitions": 4,
+    "random_seed": 42,
+    "timestamp": "2026-10-17T06:27:11.768616",
+    "test_count": 16,
+    "report_vars": null,
+    "search_method": "exhaustive",
+    "bayesian_config": null,
+    "cores_expr": null,
+    "max_core_hours": null,
+    "hostname": "devel02.plafrim.cluster",
+    "planner_stats": null,
+    "benchmark_start_time": "2026-10-17T06:27:11.766649",
+    "benchmark_end_time": "2026-10-18T08:06:20.100815",
+    "total_runtime_seconds": 92348.334166
+  },
+  "system_environment": {
+    "nodes": [
+      "sirocco24.plafrim.cluster",
+      "sirocco23.plafrim.cluster"
+    ],
+    "node_count": 2,
+    "cpu_model": "AMD EPYC 7513 32-Core Processor",
+    "cpu_cores_per_node": 64,
+    "memory_gb_per_node": "503.1-503.1",
+    "kernel": "5.14.0-687.26.1.el9_8.x86_64",
+    "os": "AlmaLinux 9.8 (Olive Jaguar)",
+    "filesystems": [
+      "beegfs:/beegfs"
+    ],
+    "nodes_detail": {
+      "sirocco24.plafrim.cluster": {
+        "hostname": "sirocco24.plafrim.cluster",
+        "cpu_model": "AMD EPYC 7513 32-Core Processor",
+        "cpu_cores": 64,
+        "memory_kb": 527554476,
+        "kernel": "5.14.0-687.26.1.el9_8.x86_64",
+        "os": "AlmaLinux 9.8 (Olive Jaguar)",
+        "ib_devices": "",
+        "filesystems": "beegfs:/beegfs",
+        "gpu_count": 2,
+        "gpu_model": "NVIDIA A100-PCIE-40GB",
+        "gpu_driver": "610.43.02",
+        "gpu_memory_mib": 40960,
+        "duration_seconds": 13179
+      },
+      "sirocco23.plafrim.cluster": {
+        "hostname": "sirocco23.plafrim.cluster",
+        "cpu_model": "AMD EPYC 7513 32-Core Processor",
+        "cpu_cores": 64,
+        "memory_kb": 527554456,
+        "kernel": "5.14.0-687.26.1.el9_8.x86_64",
+        "os": "AlmaLinux 9.8 (Olive Jaguar)",
+        "ib_devices": "",
+        "filesystems": "beegfs:/beegfs",
+        "gpu_count": 2,
+        "gpu_model": "NVIDIA A100-PCIE-40GB",
+        "gpu_driver": "610.43.02",
+        "gpu_memory_mib": 40960,
+        "duration_seconds": 13234
+      }
+    }
+  },
+  "variables": {
+    "dataset": {
+      "type": "str",
+      "swept": true,
+      "adaptive": false,
+      "escalate": false,
+      "sweep": {
+        "mode": "list",
+        "values": [
+          "taasrad19",
+          "moving_mnist"
+        ]
+      }
+    },
+    "model_architecture": {
+      "type": "str",
+      "swept": true,
+      "adaptive": false,
+      "escalate": false,
+      "sweep": {
+        "mode": "list",
+        "values": [
+          "convlstm",
+          "ms_convlstm"
+        ]
+      }
+    },
+    "project_dir": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "/home/jrezende/convlstm-green-ai"
+    },
+    "venv_dir": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "{{ project_dir }}/.venv"
+    },
+    "results_dir": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "{{ project_dir }}/experiments_results"
+    }
+  },
+  "metrics": [
+    {
+      "name": "total_training_time_sec",
+      "script": "convlstm_train"
+    },
+    {
+      "name": "average_epoch_time_sec",
+      "script": "convlstm_train"
+    },
+    {
+      "name": "min_epoch_loss",
+      "script": "convlstm_train"
+    },
+    {
+      "name": "min_epoch",
+      "script": "convlstm_train"
+    },
+    {
+      "name": "nodes_traced",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "samples_collected",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "mem_peak_gb",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "mem_avg_gb",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "mem_peak_per_node_gb",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "cpu_avg_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "cpu_max_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "cpu_imbalance_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "trace_duration_s",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_count",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_samples_collected",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_avg_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_avg_power_w",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_avg_temperature_c",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_mem_peak_mib",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_energy_j",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_avg_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_avg_power_w",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_avg_temperature_c",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_mem_peak_mib",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_energy_j",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_avg_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_max_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_avg_mem_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_mem_peak_mib",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_avg_temperature_c",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_max_temperature_c",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_avg_power_w",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_max_power_w",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_energy_j",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_trace_duration_s",
+      "script": "__iops_resource_sampling"
+    }
+  ],
+  "output": {
+    "type": "csv",
+    "path": "results.csv",
+    "table": null
+  },
+  "command": {
+    "template": "\"{{ venv_dir }}/bin/python\" \"{{ project_dir }}/trainer.py\" --num_epochs 100 --batch_size 10 --working_dir {{ results_dir }} --start_epoch_saving 100 --normalize_values --model_architecture {{ model_architecture }} --dataset {{ dataset }} --result_folder_suffix {{ model_architecture }}_{{ repetition }}\n",
+    "labels": {}
+  },
+  "reporting": null
+}

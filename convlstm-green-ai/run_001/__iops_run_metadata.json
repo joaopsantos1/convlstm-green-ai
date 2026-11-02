@@ -1,0 +1,98 @@
+{
+  "iops_version": "3.5.10.dev0",
+  "benchmark": {
+    "name": "ConvLSTM and MS-ConvLSTM Training",
+    "description": "",
+    "executor": "slurm",
+    "repetitions": 4,
+    "random_seed": 42,
+    "timestamp": "2026-10-17T05:44:11.822737",
+    "test_count": 0,
+    "report_vars": null,
+    "search_method": "exhaustive",
+    "bayesian_config": null,
+    "cores_expr": null,
+    "max_core_hours": null,
+    "hostname": "devel02.plafrim.cluster",
+    "planner_stats": null,
+    "benchmark_start_time": "2026-10-17T05:44:11.820863"
+  },
+  "system_environment": {},
+  "variables": {
+    "dataset": {
+      "type": "str",
+      "swept": true,
+      "adaptive": false,
+      "escalate": false,
+      "sweep": {
+        "mode": "list",
+        "values": [
+          "taasrad19",
+          "moving_mnist"
+        ]
+      }
+    },
+    "model_architecture": {
+      "type": "str",
+      "swept": true,
+      "adaptive": false,
+      "escalate": false,
+      "sweep": {
+        "mode": "list",
+        "values": [
+          "convlstm",
+          "ms_convlstm"
+        ]
+      }
+    },
+    "project_dir": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "/home/jrezende/convlstm-green-ai"
+    },
+    "venv_dir": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "{{ project_dir }}/.venv"
+    },
+    "results_dir": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "{{ project_dir }}/experiments_results"
+    }
+  },
+  "metrics": [
+    {
+      "name": "total_training_time_sec",
+      "script": "convlstm_train"
+    },
+    {
+      "name": "average_epoch_time_sec",
+      "script": "convlstm_train"
+    },
+    {
+      "name": "min_epoch_loss",
+      "script": "convlstm_train"
+    },
+    {
+      "name": "min_epoch",
+      "script": "convlstm_train"
+    }
+  ],
+  "output": {
+    "type": "csv",
+    "path": "results.csv",
+    "table": null
+  },
+  "command": {
+    "template": "\"{{ venv_dir }}/bin/python\" \"{{ project_dir }}/trainer.py\" --num_epochs 100 --batch_size 10 --working_dir {{ results_dir }} --start_epoch_saving 100 --normalize_values --model_architecture {{ model_architecture }} --dataset {{ dataset }} --result_folder_suffix {{ model_architecture }}_{{ repetition }}\n",
+    "labels": {}
+  },
+  "reporting": null
+}

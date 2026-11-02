@@ -1,0 +1,259 @@
+{
+  "iops_version": "3.5.10.dev0",
+  "benchmark": {
+    "name": "ConvLSTM and MS-ConvLSTM Prediction - Evaluation",
+    "description": "",
+    "executor": "slurm",
+    "repetitions": 4,
+    "random_seed": 42,
+    "timestamp": "2026-10-19T01:57:07.395655",
+    "test_count": 8,
+    "report_vars": null,
+    "search_method": "exhaustive",
+    "bayesian_config": null,
+    "cores_expr": null,
+    "max_core_hours": null,
+    "hostname": "devel02.plafrim.cluster",
+    "planner_stats": null,
+    "benchmark_start_time": "2026-10-19T01:57:07.393778",
+    "benchmark_end_time": "2026-10-19T01:59:38.044844",
+    "total_runtime_seconds": 150.651066
+  },
+  "system_environment": {},
+  "variables": {
+    "dataset": {
+      "type": "str",
+      "swept": true,
+      "adaptive": false,
+      "escalate": false,
+      "sweep": {
+        "mode": "list",
+        "values": [
+          "taasrad19",
+          "moving_mnist"
+        ]
+      }
+    },
+    "model_architecture": {
+      "type": "str",
+      "swept": true,
+      "adaptive": false,
+      "escalate": false,
+      "sweep": {
+        "mode": "list",
+        "values": [
+          "convlstm",
+          "ms_convlstm"
+        ]
+      }
+    },
+    "project_dir": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "/home/jrezende/convlstm-green-ai"
+    },
+    "venv_dir": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "{{ project_dir }}/.venv"
+    },
+    "results_dir": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "{{ project_dir }}/experiments_results"
+    },
+    "weight_file": {
+      "type": "str",
+      "swept": false,
+      "adaptive": false,
+      "escalate": false,
+      "expr": "{{ results_dir }}/training_{{ dataset }}_standard_{{ model_architecture }}_{{ repetition }}/weights/{{ model_architecture }}/{{ dataset }}_{{ model_architecture }}_standard_100.pth"
+    }
+  },
+  "metrics": [
+    {
+      "name": "total_predict_time_sec",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "total_predict_time_with_evaluation_sec",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "MAE",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "MSE",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "RMSE",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "SSIM",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "PSNR",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "CSI_avg",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "POD_avg",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "FAR_avg",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "HSS_avg",
+      "script": "convlstm_predict_evaluation"
+    },
+    {
+      "name": "nodes_traced",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "samples_collected",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "mem_peak_gb",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "mem_avg_gb",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "mem_peak_per_node_gb",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "cpu_avg_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "cpu_max_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "cpu_imbalance_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "trace_duration_s",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_count",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_samples_collected",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_avg_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_avg_power_w",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_avg_temperature_c",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_mem_peak_mib",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu0_energy_j",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_avg_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_avg_power_w",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_avg_temperature_c",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_mem_peak_mib",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu1_energy_j",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_avg_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_max_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_avg_mem_utilization_pct",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_mem_peak_mib",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_avg_temperature_c",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_max_temperature_c",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_avg_power_w",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_max_power_w",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_energy_j",
+      "script": "__iops_resource_sampling"
+    },
+    {
+      "name": "gpu_trace_duration_s",
+      "script": "__iops_resource_sampling"
+    }
+  ],
+  "output": {
+    "type": "csv",
+    "path": "results.csv",
+    "table": null
+  },
+  "command": {
+    "template": "\"{{ venv_dir }}/bin/python\" \"{{ project_dir }}/predictor.py\" --model_weight_file_path {{ weight_file }} --working_dir {{ results_dir }} --normalize_values --model_architecture {{ model_architecture }} --dataset {{ dataset }} --result_folder_suffix {{ model_architecture }}_{{ repetition }}\n",
+    "labels": {}
+  },
+  "reporting": null
+}

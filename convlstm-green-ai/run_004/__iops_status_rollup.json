@@ -1,0 +1,183 @@
+{
+  "benchmark": "ConvLSTM and MS-ConvLSTM Prediction - Evaluation",
+  "repetitions": 4,
+  "complete": true,
+  "executions": {
+    "exec_0004": {
+      "reps": {
+        "1": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:14:40",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:13:10",
+          "job_start": null
+        },
+        "2": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:14:40",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:13:10",
+          "job_start": null
+        },
+        "3": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:16:11",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:15:41",
+          "job_start": null
+        },
+        "4": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:16:41",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:16:11",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0001": {
+      "reps": {
+        "1": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:15:11",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:14:41",
+          "job_start": null
+        },
+        "2": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:15:11",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:14:41",
+          "job_start": null
+        },
+        "3": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:15:41",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:15:11",
+          "job_start": null
+        },
+        "4": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:16:11",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:15:41",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0003": {
+      "reps": {
+        "1": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:15:41",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:15:11",
+          "job_start": null
+        },
+        "2": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:17:41",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:17:11",
+          "job_start": null
+        },
+        "3": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:18:11",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:17:41",
+          "job_start": null
+        },
+        "4": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:18:11",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:17:41",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0002": {
+      "reps": {
+        "1": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:16:41",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:16:11",
+          "job_start": null
+        },
+        "2": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:17:11",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:16:41",
+          "job_start": null
+        },
+        "3": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:17:11",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:16:41",
+          "job_start": null
+        },
+        "4": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 00:17:41",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 00:17:11",
+          "job_start": null
+        }
+      }
+    }
+  }
+}

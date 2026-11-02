@@ -1,0 +1,27 @@
+{
+  "benchmark": "ConvLSTM and MS-ConvLSTM Training",
+  "repetitions": 4,
+  "complete": false,
+  "executions": {
+    "exec_0004": {
+      "reps": {
+        "1": {
+          "status": "RUNNING",
+          "error": null,
+          "end_time": null,
+          "cached": false,
+          "submission_time": "2026-10-17 05:44:11",
+          "job_start": null
+        },
+        "2": {
+          "status": "RUNNING",
+          "error": null,
+          "end_time": null,
+          "cached": false,
+          "submission_time": "2026-10-17 05:44:11",
+          "job_start": null
+        }
+      }
+    }
+  }
+}

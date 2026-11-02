@@ -1,0 +1,97 @@
+{
+  "benchmark": "ConvLSTM and MS-ConvLSTM Prediction - Evaluation",
+  "repetitions": 4,
+  "complete": true,
+  "executions": {
+    "exec_0004": {
+      "reps": {
+        "1": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 01:58:07",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 01:57:07",
+          "job_start": null
+        },
+        "2": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 01:58:07",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 01:57:07",
+          "job_start": null
+        },
+        "3": {
+          "status": "RUNNING",
+          "error": null,
+          "end_time": null,
+          "cached": false,
+          "submission_time": "2026-10-19 01:59:07",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0001": {
+      "reps": {
+        "1": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 01:58:37",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 01:58:07",
+          "job_start": null
+        },
+        "2": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 01:58:37",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 01:58:07",
+          "job_start": null
+        },
+        "3": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 01:59:07",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 01:58:37",
+          "job_start": null
+        },
+        "4": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 01:59:37",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 01:59:07",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0003": {
+      "reps": {
+        "1": {
+          "status": "FAILED",
+          "error": null,
+          "end_time": "2026-10-19 01:59:07",
+          "cached": false,
+          "duration_seconds": null,
+          "metrics": null,
+          "submission_time": "2026-10-19 01:58:37",
+          "job_start": null
+        }
+      }
+    }
+  }
+}

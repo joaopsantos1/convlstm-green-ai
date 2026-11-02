@@ -1,0 +1,215 @@
+{
+  "benchmark": "ConvLSTM and MS-ConvLSTM Prediction",
+  "repetitions": 4,
+  "complete": true,
+  "executions": {
+    "exec_0004": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:06:56",
+          "cached": false,
+          "duration_seconds": 90,
+          "metrics": {
+            "total_predict_time_sec": 38.05259658501018
+          },
+          "submission_time": "2026-10-18 22:04:56",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:06:56",
+          "cached": false,
+          "duration_seconds": 97,
+          "metrics": {
+            "total_predict_time_sec": 47.86758426763117
+          },
+          "submission_time": "2026-10-18 22:04:56",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:12:57",
+          "cached": false,
+          "duration_seconds": 58,
+          "metrics": {
+            "total_predict_time_sec": 34.697604974964634
+          },
+          "submission_time": "2026-10-18 22:11:27",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:13:57",
+          "cached": false,
+          "duration_seconds": 70,
+          "metrics": {
+            "total_predict_time_sec": 44.43399320170283
+          },
+          "submission_time": "2026-10-18 22:12:27",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0001": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:08:56",
+          "cached": false,
+          "duration_seconds": 89,
+          "metrics": {
+            "total_predict_time_sec": 61.18673898372799
+          },
+          "submission_time": "2026-10-18 22:06:56",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:08:56",
+          "cached": false,
+          "duration_seconds": 94,
+          "metrics": {
+            "total_predict_time_sec": 70.46618218603544
+          },
+          "submission_time": "2026-10-18 22:06:56",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:11:27",
+          "cached": false,
+          "duration_seconds": 123,
+          "metrics": {
+            "total_predict_time_sec": 73.594245930959
+          },
+          "submission_time": "2026-10-18 22:08:57",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:12:27",
+          "cached": false,
+          "duration_seconds": 92,
+          "metrics": {
+            "total_predict_time_sec": 64.66800366900861
+          },
+          "submission_time": "2026-10-18 22:10:27",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0003": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:10:26",
+          "cached": false,
+          "duration_seconds": 79,
+          "metrics": {
+            "total_predict_time_sec": 18.495202376507223
+          },
+          "submission_time": "2026-10-18 22:08:56",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:17:57",
+          "cached": false,
+          "duration_seconds": 44,
+          "metrics": {
+            "total_predict_time_sec": 18.351803882978857
+          },
+          "submission_time": "2026-10-18 22:16:57",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:18:57",
+          "cached": false,
+          "duration_seconds": 45,
+          "metrics": {
+            "total_predict_time_sec": 22.648761079006363
+          },
+          "submission_time": "2026-10-18 22:17:57",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:19:58",
+          "cached": false,
+          "duration_seconds": 49,
+          "metrics": {
+            "total_predict_time_sec": 22.84419368795352
+          },
+          "submission_time": "2026-10-18 22:18:58",
+          "job_start": null
+        }
+      }
+    },
+    "exec_0002": {
+      "reps": {
+        "1": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:15:27",
+          "cached": false,
+          "duration_seconds": 130,
+          "metrics": {
+            "total_predict_time_sec": 113.54980002698721
+          },
+          "submission_time": "2026-10-18 22:12:57",
+          "job_start": null
+        },
+        "2": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:16:57",
+          "cached": false,
+          "duration_seconds": 173,
+          "metrics": {
+            "total_predict_time_sec": 153.1088414574042
+          },
+          "submission_time": "2026-10-18 22:13:57",
+          "job_start": null
+        },
+        "3": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:17:57",
+          "cached": false,
+          "duration_seconds": 131,
+          "metrics": {
+            "total_predict_time_sec": 113.22263770998688
+          },
+          "submission_time": "2026-10-18 22:15:27",
+          "job_start": null
+        },
+        "4": {
+          "status": "SUCCEEDED",
+          "error": null,
+          "end_time": "2026-10-18 22:20:58",
+          "cached": false,
+          "duration_seconds": 175,
+          "metrics": {
+            "total_predict_time_sec": 156.50247616972774
+          },
+          "submission_time": "2026-10-18 22:17:57",
+          "job_start": null
+        }
+      }
+    }
+  }
+}
