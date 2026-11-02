@@ -35,7 +35,7 @@ emissions.csv
 
 # Operating system
 .DS_Store
-Thumbs.db
+*.db
 desktop.ini
 
 # Environment variables and secrets
