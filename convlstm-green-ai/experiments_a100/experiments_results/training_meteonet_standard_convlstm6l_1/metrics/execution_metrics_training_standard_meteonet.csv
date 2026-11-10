@@ -1,0 +1,2 @@
+total_training_time_sec,total_training_time_part_hour,total_training_time_part_min,total_training_time_part_sec,average_epoch_time_sec,min_epoch_loss,min_epoch
+20455.94792224141,5.0,40.0,55.94792224140838,204.5594792224141,0.0016013696907073557,59

@@ -3,6 +3,7 @@ from torch import Tensor
 from torch.utils.data import DataLoader
 from datasets.taasrad19 import TAASRAD19
 from datasets.moving_mnist import MovingMNIST
+from datasets.meteonet import MeteoNet
 
 
 def get_datasets_parameters(name: str) -> dict:
@@ -10,6 +11,8 @@ def get_datasets_parameters(name: str) -> dict:
         return TAASRAD19.metadata
     elif name == "moving_mnist":
         return MovingMNIST.metadata
+    elif name == "meteonet":
+        return MeteoNet.metadata
     raise Exception(f"Dataset '{name}' not implemented")
 
 
@@ -33,6 +36,15 @@ def load_dataset(
         )
     elif name == "moving_mnist":
         return MovingMNIST.load(
+            dataset_mode,
+            dataset_size,
+            normalize_values,
+            batch_size,
+            num_workers,
+            shuffle,
+        )
+    elif name == "meteonet":
+        return MeteoNet.load(
             dataset_mode,
             dataset_size,
             normalize_values,

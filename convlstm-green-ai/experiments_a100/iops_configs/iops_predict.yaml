@@ -1,0 +1,105 @@
+benchmark:
+  name: "ConvLSTM vs MS-ConvLSTM Prediction"
+  description: "Inference only (no evaluation) of ConvLSTM with and without the MS framework on A100 nodes"
+  workdir: "/beegfs/lgouveia/green_ai/iops_runs/predict"
+  cache_file: "/beegfs/lgouveia/green_ai/iops_runs/cache_predict.db"
+  cache_exclude_vars: ["results_dir", "weight_file", "project_dir", "venv_dir"]
+  executor: slurm
+  search_method: exhaustive
+  repetitions: 4
+  parallel: 4
+  probes:
+    system_snapshot: true
+    resource_sampling: true
+    gpu_sampling: true
+    sampling_interval: 1.0
+
+vars:
+  dataset:
+    type: str
+    sweep:
+      mode: list
+      values: ["taasrad19", "moving_mnist", "meteonet"]
+
+  model_architecture:
+    type: str
+    sweep:
+      mode: list
+      values: ["convlstm", "ms_convlstm"]
+
+  project_dir:
+    type: str
+    expr: "/beegfs/lgouveia/green_ai/convlstm-green-ai"
+
+  venv_dir:
+    type: str
+    expr: "/home/lgouveia/.venvs/convlstm_env"
+
+  results_dir:
+    type: str
+    expr: "{{ project_dir }}/experiments_results"
+
+  # Prediction repetition N uses the weights of training repetition N (epoch 100).
+  weight_file:
+    type: str
+    expr: "{{ results_dir }}/training_{{ dataset }}_standard_{{ model_architecture }}_{{ repetition }}/weights/{{ model_architecture }}/{{ dataset }}_{{ model_architecture }}_standard_100.pth"
+
+command:
+  template: >
+    "{{ venv_dir }}/bin/python" "{{ project_dir }}/predictor.py"
+    --model_weight_file_path {{ weight_file }}
+    --working_dir {{ results_dir }}
+    --normalize_values
+    --model_architecture {{ model_architecture }}
+    --dataset {{ dataset }}
+    --result_folder_suffix {{ model_architecture }}_{{ repetition }}
+    --skip_run_evaluation
+
+scripts:
+  - name: "convlstm_predict"
+    submit: "sbatch"
+    script_template: |
+      #!/bin/bash
+      #SBATCH --job-name={{ model_architecture }}_pred_{{ dataset }}
+      #SBATCH --nodes=1
+      #SBATCH --ntasks=1
+      #SBATCH --constraint=a100
+      #SBATCH --exclusive
+      #SBATCH --time=24:00:00
+      #SBATCH -o batch%j.out
+      #SBATCH -e batch%j.err
+
+      set -o pipefail
+
+      module load nvidia-driver-libs-plafrim/610
+      module load zlib
+
+      if [[ ! -x "{{ venv_dir }}/bin/python" ]]; then
+        echo "Python environment not found at {{ venv_dir }}" >&2
+        exit 1
+      fi
+
+      if [[ ! -f "{{ weight_file }}" ]]; then
+        echo "Trained weights not found at {{ weight_file }} (run iops_train.yaml first)" >&2
+        exit 1
+      fi
+
+      {{ command.template }} 2>&1 | tee {{ execution_dir }}/predict.log
+
+    parser:
+      file: "{{ results_dir }}/predict_{{ dataset }}_standard_{{ model_architecture }}_{{ repetition }}/metrics/execution_metrics_predict_standard_{{ dataset }}.csv"
+      metrics:
+        - name: total_predict_time_sec
+      parser_script: |
+        import csv
+        def parse(file_path):
+            with open(file_path) as f:
+                reader = csv.DictReader(f)
+                exec_row = next(reader)
+            return {
+                "total_predict_time_sec": float(exec_row["total_predict_time_sec"]),
+            }
+
+output:
+  sink:
+    type: csv

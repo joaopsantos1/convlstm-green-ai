@@ -1,0 +1,111 @@
+benchmark:
+  name: "ConvLSTM 6-layer baseline Training"
+  description: "6-layer ConvLSTM (same depth as MS-ConvLSTM) on A100 nodes sirocco21/24"
+  workdir: "/beegfs/lgouveia/green_ai/iops_runs/train_convlstm6"
+  cache_file: "/beegfs/lgouveia/green_ai/iops_runs/cache_train_convlstm6.db"
+  cache_exclude_vars: ["results_dir", "project_dir", "venv_dir"]
+  executor: slurm
+  search_method: exhaustive
+  repetitions: 4
+  parallel: 2
+  probes:
+    system_snapshot: true
+    resource_sampling: true
+    gpu_sampling: true
+    sampling_interval: 1.0
+
+vars:
+  dataset:
+    type: str
+    sweep:
+      mode: list
+      values: ["taasrad19", "moving_mnist", "meteonet"]
+
+  # Same depth as MS_ConvLSTM.py (6 cells of 64 channels), all at full resolution.
+  model_architecture:
+    type: str
+    expr: "convlstm"
+
+  hidden_dims:
+    type: str
+    expr: "64 64 64 64 64 64"
+
+  variant:
+    type: str
+    expr: "convlstm6l"
+
+  project_dir:
+    type: str
+    expr: "/beegfs/lgouveia/green_ai/convlstm-green-ai"
+
+  venv_dir:
+    type: str
+    expr: "/home/lgouveia/.venvs/convlstm_env"
+
+  results_dir:
+    type: str
+    expr: "{{ project_dir }}/experiments_results"
+
+command:
+  template: >
+    "{{ venv_dir }}/bin/python" "{{ project_dir }}/trainer.py"
+    --num_epochs 100
+    --batch_size 10
+    --working_dir {{ results_dir }}
+    --start_epoch_saving 100
+    --normalize_values
+    --model_architecture {{ model_architecture }}
+    --hidden_dims {{ hidden_dims }}
+    --dataset {{ dataset }}
+    --result_folder_suffix {{ variant }}_{{ repetition }}
+
+scripts:
+  - name: "convlstm6_train"
+    submit: "sbatch"
+    script_template: |
+      #!/bin/bash
+      #SBATCH --job-name={{ variant }}_train_{{ dataset }}
+      #SBATCH --nodes=1
+      #SBATCH --ntasks=1
+      #SBATCH --constraint=a100
+      #SBATCH --exclude=sirocco22,sirocco23,sirocco25
+      #SBATCH --exclusive
+      #SBATCH --time=24:00:00
+      #SBATCH -o batch%j.out
+      #SBATCH -e batch%j.err
+
+      set -o pipefail
+
+      module load nvidia-driver-libs-plafrim/610
+      module load zlib
+
+      if [[ ! -x "{{ venv_dir }}/bin/python" ]]; then
+        echo "Python environment not found at {{ venv_dir }}" >&2
+        exit 1
+      fi
+
+      {{ command.template }} 2>&1 | tee {{ execution_dir }}/train.log
+
+    parser:
+      file: "{{ results_dir }}/training_{{ dataset }}_standard_{{ variant }}_{{ repetition }}/metrics/execution_metrics_training_standard_{{ dataset }}.csv"
+      metrics:
+        - name: total_training_time_sec
+        - name: average_epoch_time_sec
+        - name: min_epoch_loss
+        - name: min_epoch
+      parser_script: |
+        import csv
+        def parse(file_path):
+            with open(file_path) as f:
+                reader = csv.DictReader(f)
+                row = next(reader)
+            return {
+                "total_training_time_sec": float(row["total_training_time_sec"]),
+                "average_epoch_time_sec": float(row["average_epoch_time_sec"]),
+                "min_epoch_loss": float(row["min_epoch_loss"]),
+                "min_epoch": int(row["min_epoch"]),
+            }
+
+output:
+  sink:
+    type: csv

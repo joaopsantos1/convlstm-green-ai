@@ -1,0 +1,146 @@
+benchmark:
+  name: "ConvLSTM 6-layer baseline Prediction - Evaluation"
+  description: "Inference plus quality evaluation of the 6-layer ConvLSTM on A100 nodes sirocco21/24"
+  workdir: "/beegfs/lgouveia/green_ai/iops_runs/predict_evaluation_convlstm6"
+  cache_file: "/beegfs/lgouveia/green_ai/iops_runs/cache_predict_evaluation_convlstm6.db"
+  cache_exclude_vars: ["results_dir", "weight_file", "project_dir", "venv_dir"]
+  executor: slurm
+  search_method: exhaustive
+  repetitions: 4
+  parallel: 2
+  probes:
+    system_snapshot: true
+    resource_sampling: true
+    gpu_sampling: true
+    sampling_interval: 1.0
+
+vars:
+  dataset:
+    type: str
+    sweep:
+      mode: list
+      values: ["taasrad19", "moving_mnist", "meteonet"]
+
+  model_architecture:
+    type: str
+    expr: "convlstm"
+
+  hidden_dims:
+    type: str
+    expr: "64 64 64 64 64 64"
+
+  variant:
+    type: str
+    expr: "convlstm6l"
+
+  project_dir:
+    type: str
+    expr: "/beegfs/lgouveia/green_ai/convlstm-green-ai"
+
+  venv_dir:
+    type: str
+    expr: "/home/lgouveia/.venvs/convlstm_env"
+
+  results_dir:
+    type: str
+    expr: "{{ project_dir }}/experiments_results"
+
+  # Prediction repetition N uses the weights of training repetition N (epoch 100).
+  weight_file:
+    type: str
+    expr: "{{ results_dir }}/training_{{ dataset }}_standard_{{ variant }}_{{ repetition }}/weights/{{ model_architecture }}/{{ dataset }}_{{ model_architecture }}_standard_100.pth"
+
+  # Distinct output folder from the predict-only stage (utils.py uses os.mkdir).
+  result_suffix:
+    type: str
+    expr: "{{ variant }}_eval_{{ repetition }}"
+
+command:
+  template: >
+    "{{ venv_dir }}/bin/python" "{{ project_dir }}/predictor.py"
+    --model_weight_file_path {{ weight_file }}
+    --working_dir {{ results_dir }}
+    --normalize_values
+    --model_architecture {{ model_architecture }}
+    --hidden_dims {{ hidden_dims }}
+    --dataset {{ dataset }}
+    --result_folder_suffix {{ result_suffix }}
+
+scripts:
+  - name: "convlstm6_predict_evaluation"
+    submit: "sbatch"
+    script_template: |
+      #!/bin/bash
+      #SBATCH --job-name={{ variant }}_eval_{{ dataset }}
+      #SBATCH --nodes=1
+      #SBATCH --ntasks=1
+      #SBATCH --constraint=a100
+      #SBATCH --exclude=sirocco22,sirocco23,sirocco25
+      #SBATCH --exclusive
+      #SBATCH --time=24:00:00
+      #SBATCH -o batch%j.out
+      #SBATCH -e batch%j.err
+
+      set -o pipefail
+
+      module load nvidia-driver-libs-plafrim/610
+      module load zlib
+
+      if [[ ! -x "{{ venv_dir }}/bin/python" ]]; then
+        echo "Python environment not found at {{ venv_dir }}" >&2
+        exit 1
+      fi
+
+      if [[ ! -f "{{ weight_file }}" ]]; then
+        echo "Trained weights not found at {{ weight_file }} (run iops_train_convlstm6.yaml first)" >&2
+        exit 1
+      fi
+
+      {{ command.template }} 2>&1 | tee {{ execution_dir }}/predict.log
+
+    parser:
+      file: "{{ results_dir }}/predict_{{ dataset }}_standard_{{ result_suffix }}/metrics/execution_metrics_predict_standard_{{ dataset }}.csv"
+      metrics:
+        - name: total_predict_time_sec
+        - name: total_predict_time_with_evaluation_sec
+        - name: MAE
+        - name: MSE
+        - name: RMSE
+        - name: SSIM
+        - name: PSNR
+        - name: CSI_avg
+        - name: POD_avg
+        - name: FAR_avg
+        - name: HSS_avg
+      parser_script: |
+        import csv
+        import os
+        def parse(file_path):
+            with open(file_path) as f:
+                reader = csv.DictReader(f)
+                exec_row = next(reader)
+
+            results = {
+                "total_predict_time_sec": float(exec_row["total_predict_time_sec"]),
+                "total_predict_time_with_evaluation_sec": float(exec_row["total_predict_time_with_evaluation_sec"]),
+            }
+
+            metrics_dir = os.path.dirname(file_path)
+            img_file = os.path.join(metrics_dir, f"standard_{vars['dataset']}_image_metrics.csv")
+            with open(img_file) as f:
+                img_row = next(csv.DictReader(f))
+            for m in ["MAE", "MSE", "RMSE", "SSIM", "PSNR"]:
+                results[m] = float(img_row[m])
+
+            # First threshold row carries the averaged values
+            thr_file = os.path.join(metrics_dir, f"standard_{vars['dataset']}_threshold_metrics.csv")
+            with open(thr_file) as f:
+                thr_row = next(csv.DictReader(f))
+            for m in ["CSI_avg", "POD_avg", "FAR_avg", "HSS_avg"]:
+                results[m] = float(thr_row[m])
+
+            return results
+
+output:
+  sink:
+    type: csv
